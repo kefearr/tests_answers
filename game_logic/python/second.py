@@ -189,4 +189,20 @@ class CircularBuffer_3(Queue):
 
 
 if __name__ == "__main__":
-    buf = CircularBuffer_3(capacity=3)
+    cb = CircularBuffer(capacity=3)
+    cb.enqueue(1)
+    cb.enqueue('c')
+    cb.enqueue("string")
+    cb.enqueue(4)
+    cb.enqueue(5)
+
+    cb.display() # CircularBuffer: 1 2 3 4 5
+
+    cb.enqueue(6)
+    cb.display() # CircularBuffer: 6 2 3 4 5 (поскольку 1 был перезаписан)
+
+    # std::cout << "Dequeued: " << cb.dequeue() << std::endl; // Dequeued: 6
+    print("dequeued: ", cb.dequeue())
+    cb.display() # CircularBuffer: 2 3 4 5
+
+    # return 0;
